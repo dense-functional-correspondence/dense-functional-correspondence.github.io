@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Weakly-Supervised Learning of Dense Functional Correspondences">
+  <meta name="keywords" content="Dense Correspondence, Functional Affordance, Weakly-supervised Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weakly-Supervised Learning of Dense Functional Correspondences</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Weakly-Supervised Learning of Dense Functional Correspondences</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://sstojanov.github.io">Stefan Stojanov</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://frankz24.github.io">Linan Zhao</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://ai.stanford.edu/~yzzhang/">Yunzhi Zhang</a><sup></sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://stanford.edu/~yamins/">Dan Yamins</a><sup></sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.jiajunwu.com">Jiajun Wu</a><sup></sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Stanford University</span>
+            <br>
+            <span class="author-block"><sup>*</sup>denotes equal contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+      <h2 class="title is-6">
+      <div class="image-row">
+        <img src="static/images/teaser.png" width="100%" style="padding-left: 0%">
+      </div>
+      <br>
+      </h2>
+  </div>
+  <div class="container is-max-desktop has-text-justified">
+    <p>
+      <b>Dense Functional Correspondence </b>
+      refers to establishing dense correspondences across object instances based on function similarity (e.g., "pour-with"). 
+      This task is especially challenging when objects have visually different but functionally similar parts, requiring both semantic understanding and structural understanding. We propose a method to learn such correspondences with little human supervision, leveraging automated data curation and annotation, and dense contrastive learning.
+    </p>
+  </div>
+  <br><br>
+  
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Establishing dense correspondences across image pairs is essential for tasks such as shape reconstruction and robot manipulation. 
+            In the challenging setting of matching across different categories, the function of an object, i.e., the effect that an object can cause on other objects, can guide how correspondences should be established. 
+            This is because object parts that enable specific functions often share similarities in shape and appearance. 
+            We derive the definition of <b><i>dense functional correspondence</i></b> based on this observation and propose a weakly-supervised learning paradigm to tackle the prediction task. 
+            The main insight behind our approach is that we can leverage vision-language models to pseudo-label multi-view images to obtain functional parts. 
+            We then integrate this with dense contrastive learning from pixel correspondences to distill both functional and spatial knowledge into a new model that can establish dense functional correspondence. 
+            Further, we curate synthetic and real evaluation datasets as task benchmarks. 
+            Our results demonstrate the advantages of our approach over baseline solutions consisting of off-the-shelf self-supervised image representations and grounded vision language models.
+          </p>
+          <!--img src="./static/images/pipeline.png"
+                 class="interpolation-image"
+                 alt="pipeline"/-->
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <br><br>
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src=""
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!-- / Paper video. -->
+    
+    <!-- Paper Overview. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Paper Overview</h2>
+        <div class="container is-max-desktop has-text-justified">
+          <h2 class="title is-4">
+            <b>Why Dense Functional Correspondences?</b>
+          </h2>
+
+          <p>
+            Establishing pixel-level correspondences between image pairs is a fundamental component of object understanding, supporting applications such as shape reconstruction, image editing, and object manipulation. 
+            However, this task becomes increasingly difficult as visual similarity decreases—progressing from multiple views of the same object, to different instances within a category, and ultimately to objects from entirely different object categories. 
+            This work targets the most challenging of these scenarios: dense correspondences across object categories. 
+            Achieving such correspondences requires models to reason beyond superficial visual cues and instead capture deeper structural and semantic relationships—for example, identifying parts that fulfill similar functions across dissimilar objects. 
+            This capability is particularly important in robotics, where tasks such as transferring demonstrations across tools or manipulating novel objects depend on recognizing these functional similarities. 
+            Existing approaches based on keypoint taxonomies or affordance segmentation are often limited in precision and generality, as they cannot capture the fine-grained, pixel-level alignments required for precise reasoning and control.
+          </p> 
+          <br>
+
+          <h2 class="title is-4">
+            <b>Problem Definition</b>
+          </h2>
+
+          <p>
+            Despite differences across object categories, individual parts that serve the same function -- like the spout of a kettle and the mouth of a bottle for pouring -- have a higher resemblance with each other than at the overall object level. 
+            Such consistency is a consequence of how form follows function -- object parts that fulfill a specific function tend to remain consistent across objects.
+            This observation lead us to define dense functional correspondence through 3D object alignment based on functionally equivalent parts.
+            Specifically, given two objects and an object function, the objects are aligned if and only if the parts that fulfill this function are spatially close to each other.
+            The alignment induces an image-space distance: for any pair of pixels on the functional parts of two objects, the pixels are in functional correspondence if their respective surface points are close in 3D when the objects are aligned.
+          </p>
+          
+          <br>
+
+          <p>
+            This definition thus leads to an annotation pipeline for ground-truth functional correspondences:
+          </p>
+
+          <div class="image-row" style="width: 85%; padding-left: 15%;">
+            <img src="static/images/annotation_pipeline.png" width="100%">
+            <p>
+              <b>Annotation Pipeline (Evaluation Only).</b>
+              Given a 3D object pair (left) and a function ("pour-with"), we annotate the functional alignment of two objects by aligning the functional parts in 3D (middle). 
+              Afterward, we derive dense 2D correspondences (right) based on 3D distances of corresponding object surface points, with matching pixels shown in the same color.
+            </p>
+          </div>
+          <br>
+
+          <h2 class="title is-4">
+            <b>Approach</b>
+          </h2>
+
+          <p>
+            Our goal is to develop a scalable learning framework for dense functional correspondences without relying on human-labeled ground truth. 
+            Since this task requires both semantic and structural knowledge, we distill from off-the-shelf VLMs to obtain pseudo-labeled training data, 
+            which is further combined with dense spatial correspondences from synthetic data in a contrastive learning framework.
+            Below, we show an overview of the pseudo-labeling pipeline, the model architecture, and the training objective.
+          </p>
+          <br>
+          
+          <div class="image-row">
+            <img src="static/images/pseudo_labeling.png" width="100%">
+            <p>
+              <b>Training Data Curation via VLM Pseudo Labeling.</b>
+              Given a large unstructured dataset like Objaverse, we leverage off-the-shelf VLMs to curate and label the functional parts. 
+              Specifically, GPT-4 generates category-specific functional part prompts, and CogVLM produces bounding box proposals for multi-view image renderings, 
+              which are aggregated onto a 3D point cloud. The point cloud is post-processed to produce pixel-level functional part labels for training.
+            </p>
+          </div>
+          <br>
+
+          <div class="image-row">
+            <img src="static/images/anno_output_examples.png" width="100%">
+            <p>
+              <b>Examples of pseudo-labeled functional parts in point clouds and images using CogVLM.</b>
+              Using the procedure outlined above, we pseudo-label images with masks for the object functional parts. 
+              Notably, this pipeline has the ability to generate part labels for non-convex object parts, such as a mug's rim, and for parts that lack clear edge boundaries, such as a teapot's spout. 
+              Point clouds are shown in views that best capture the aggregated functional part labels.
+            </p>
+          </div>
+          <br>
+
+          <div class="image-row">
+            <img src="static/images/architecture_diagram.png" width="100%">
+            <p>
+              <b>Local Functional Feature Extraction.</b>
+              To obtain dense functionally conditioned features, we apply an MLP on top of a function text embedding and the spatial DINO features. 
+              The MLP is trained with both functional and spatial contrastive losses.
+            </p>
+          </div>
+          <br>
+
+          <div class="image-row">
+            <img src="static/images/training_objective.png" width="100%">
+            <p>
+              <b>Training Objectives.</b>
+              To ensure functional part similarity in the learned feature space, we use a part-level contrastive objective to distill functional part semantics from VLMs (left). 
+              The spatial contrastive loss (right) serves a complementary role and prevents the model from collapsing predictions for different regions of a part, e.g., the top and bottom of a kettle spout.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+    <br><br>
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Learned Dense Functional Correspondences</h2>
+        <br>
+        
+        <h2 class="title is-4">
+          <b>Label Transfer Dense Visualizations</b>
+        </h2>
+        
+        <div class="container is-max-desktop has-text-justified">
+          <img src="./static/images/label_transfer_dense.png" width="100%">
+            <p>
+              Our model effectively transfers functional part labels across diverse object categories. 
+              For each target image (right), our model predicts the functional part mask. 
+              To generate the transferred color map, each pixel in the predicted mask is matched to its best corresponding pixel within the ground-truth mask of the source image (left) in terms of feature similarity.
+            </p>
+        </div>
+        <br>
+
+        <h2 class="title is-4">
+          <b>Correspondence Discovery on Synthetic Objaverse Evaluation Dataset</b>
+        </h2>
+        
+        <div class="container is-max-desktop has-text-justified">
+          <img src="./static/images/additional_qualitative_objaverse.png" width="100%">
+            <p>
+              The top 10 discovered functional correspondences (separated by 5 pixels each) are shown.
+              Compared to baselines, our approach more reliably retrieves the functionally relevant correspondences with higher spatial precision.
+            </p>
+        </div>
+        <br>
+
+        <h2 class="title is-4">
+          <b>Correspondence Discovery on Real HANDAL Evaluation Dataset</b>
+        </h2>
+        
+        <div class="container is-max-desktop has-text-justified">
+          <img src="./static/images/additional_qualitative_handal.png" width="100%">
+            <p>
+              Our model generalizes to real-world images and outperforms baselines in correspondence discovery.
+            </p>
+        </div>
+        <br>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{densefunccorr2025,
+    author    = {Stojanov, Stefan and Zhao, Linan and Zhang, Yunzhi and Daniel, Yamins and Wu, Jiajun},
+    title     = {Weakly-Supervised Learning of Dense Functional Correspondences},
+    year      = {2025},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The style of this website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> 
+            under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
