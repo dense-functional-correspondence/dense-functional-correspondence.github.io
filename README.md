@@ -1,6 +1,6 @@
 # Weakly-Supervised Learning of Dense Functional Correspondences
 
-This is the repository for the [Dense Functional Correspondences website](https://xxx.github.io).
+This is the repository for the [Dense Functional Correspondences website](https://dense-functional-correspondence.github.io).
 
 If you find Dense Functional Correspondences useful for your work please cite:
 ```
